@@ -18,6 +18,9 @@
         <Projects Include="singleton\Singleton.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="adapter\Adapter.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -71,14 +74,23 @@
     <Target Name="Singleton:Make">
         <MSBuild Projects="singleton\Singleton.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Adapter">
+        <MSBuild Projects="adapter\Adapter.dproj"/>
+    </Target>
+    <Target Name="Adapter:Clean">
+        <MSBuild Projects="adapter\Adapter.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Adapter:Make">
+        <MSBuild Projects="adapter\Adapter.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="AbstractFactory;FactoryMethod;Builder;Prototype;Singleton"/>
+        <CallTarget Targets="AbstractFactory;FactoryMethod;Builder;Prototype;Singleton;Adapter"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="AbstractFactory:Clean;FactoryMethod:Clean;Builder:Clean;Prototype:Clean;Singleton:Clean"/>
+        <CallTarget Targets="AbstractFactory:Clean;FactoryMethod:Clean;Builder:Clean;Prototype:Clean;Singleton:Clean;Adapter:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="AbstractFactory:Make;FactoryMethod:Make;Builder:Make;Prototype:Make;Singleton:Make"/>
+        <CallTarget Targets="AbstractFactory:Make;FactoryMethod:Make;Builder:Make;Prototype:Make;Singleton:Make;Adapter:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
