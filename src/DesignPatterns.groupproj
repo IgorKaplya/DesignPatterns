@@ -30,6 +30,9 @@
         <Projects Include="decorator\Decorator.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="facade\Facade.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -119,14 +122,23 @@
     <Target Name="Decorator:Make">
         <MSBuild Projects="decorator\Decorator.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Facade">
+        <MSBuild Projects="facade\Facade.dproj"/>
+    </Target>
+    <Target Name="Facade:Clean">
+        <MSBuild Projects="facade\Facade.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Facade:Make">
+        <MSBuild Projects="facade\Facade.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="AbstractFactory;FactoryMethod;Builder;Prototype;Singleton;Adapter;Bridge;Composite;Decorator"/>
+        <CallTarget Targets="AbstractFactory;FactoryMethod;Builder;Prototype;Singleton;Adapter;Bridge;Composite;Decorator;Facade"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="AbstractFactory:Clean;FactoryMethod:Clean;Builder:Clean;Prototype:Clean;Singleton:Clean;Adapter:Clean;Bridge:Clean;Composite:Clean;Decorator:Clean"/>
+        <CallTarget Targets="AbstractFactory:Clean;FactoryMethod:Clean;Builder:Clean;Prototype:Clean;Singleton:Clean;Adapter:Clean;Bridge:Clean;Composite:Clean;Decorator:Clean;Facade:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="AbstractFactory:Make;FactoryMethod:Make;Builder:Make;Prototype:Make;Singleton:Make;Adapter:Make;Bridge:Make;Composite:Make;Decorator:Make"/>
+        <CallTarget Targets="AbstractFactory:Make;FactoryMethod:Make;Builder:Make;Prototype:Make;Singleton:Make;Adapter:Make;Bridge:Make;Composite:Make;Decorator:Make;Facade:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
